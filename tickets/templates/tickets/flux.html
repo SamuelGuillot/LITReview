@@ -1,0 +1,43 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
+<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}" />
+<link rel="stylesheet" href="{% static 'tickets/flux.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="main-container">
+
+    <div class="form-footer" style="justify-content:center; gap:20px;">
+        <button type="button" onclick="window.location.href='{% url 'create_ticket' %}'">
+            Demander une critique
+        </button>
+
+        <button type="button" onclick="window.location.href='{% url 'create_ticket_review' %}'">
+            Créer une critique
+        </button>
+    </div>
+
+    {% for post in posts %}
+
+        {% if post.is_review %}
+
+            {% include 'reviews/partials/review.html' with review=post %}
+
+        {% else %}
+
+            {% include 'tickets/partials/ticket.html' with ticket=post %}
+
+        {% endif %}
+
+    {% empty %}
+
+    <p>Aucun contenu dans le flux.</p>
+
+    {% endfor %}
+
+</div>
+{% endblock %}

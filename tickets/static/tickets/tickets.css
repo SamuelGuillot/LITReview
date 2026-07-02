@@ -1,0 +1,123 @@
+.ticket-container,
+.ticket-edit-container,
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+
+.ticket-edit-container {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+
+
+h2,
+.form-field h3,
+.form-group h2,
+.section-label {
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+
+
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-section {
+    border: 1px solid black;
+    margin-bottom: -1px;
+    padding: 15px 30px;
+}
+
+
+.form-field input[type="text"],
+.form-field textarea,
+.form-group input[type="text"],
+.form-group textarea,
+.form-content input[type="text"],
+.form-content textarea,
+.form-content select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.form-field textarea,
+.form-group textarea {
+    min-height: 200px;
+}
+
+.form-content textarea {
+    min-height: 150px;
+}
+
+
+#id_description {
+    height: 200px;
+}
+
+p #id_body:last-child {
+    height: 200px;
+}
+
+.image-preview img {
+    max-width: 200px;
+    display: block;
+    margin: 40px 0;
+    border: 1px solid #ddd;
+}
+
+
+
+button,
+.btn-secondary,
+.btn-submit {
+    background-color: white;
+    border: 1px solid black;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-submit {
+    padding: 10px 40px;
+}
+
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding: 20px 30px;
+}
+
+
+#id_rating {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    margin: 10px 0;
+    align-items: center;
+}

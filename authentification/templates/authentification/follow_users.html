@@ -1,0 +1,51 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'authentification/auth.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="following_container">
+    <h2>Suivre d'autres utilisateurs</h2>
+
+
+    <div class="searchbar">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" id="site-search" name="followed_user_username" placeholder="Nom d'utilisateur">
+            <button type="submit">Envoyer</button>
+        </form>
+
+        {% if messages %}
+        {% for message in messages %}
+        <p class="messages {{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <h2>Abonnements</h2>
+    <div class="subscriptions">
+        {% for follow in following %}
+        <div class="subscription-item">
+            <p>{{ follow.followed_user.username }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="unfollow_user_id" value="{{ follow.followed_user.id }}">
+                <button type="submit">Se désabonner</button>
+            </form>
+        </div>
+        {% empty %}
+        <p>Vous ne suivez personne.</p>
+        {% endfor %}
+    </div>
+
+    <h2>Abonnés</h2>
+    <div class="subscribers">
+        {% for follow in followers %}
+        <p>{{ follow.user.username }}</p>
+        {% empty %}
+        <p>Personne ne vous suit.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

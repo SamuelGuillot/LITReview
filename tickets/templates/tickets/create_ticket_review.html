@@ -1,0 +1,32 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="main-container">
+    <h2 class="page-title">Créer une critique</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-section">
+            <h3 class="section-label">Livre / Article</h3>
+            <div class="form-content">
+                {{ ticket_form.as_p }}
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3 class="section-label">Critique</h3>
+            <div class="form-content">
+                {{ review_form.as_p }}
+            </div>
+        </div>
+
+        <div class="form-footer">
+            <button type="submit" class="btn-submit">Envoyer</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

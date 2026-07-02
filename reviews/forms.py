@@ -1,0 +1,16 @@
+from django import forms
+from .models import Review
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ["headline", "rating", "body"]
+
+        labels = {
+            "headline": "Titre",
+            "rating": "Note",
+            "body": "Commentaire",
+        }
+
+        widgets = {"rating": forms.RadioSelect}

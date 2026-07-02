@@ -1,0 +1,11 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <p>Voulez-vous supprmier la review: "{{ review.headline }}"?</p>
+    <button type="submit">Oui, supprimer</button>
+</form>
+
+
+{% endblock %}

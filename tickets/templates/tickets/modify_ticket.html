@@ -1,0 +1,44 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="ticket-edit-container">
+    <h1 class="page-title">Modifier votre ticket</h1>
+
+    <form action="" method="post" enctype="multipart/form-data" class="ticket-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <h2>Titre</h2>
+            {{ form.title }}
+        </div>
+
+        <div class="form-group">
+            <h2>Description</h2>
+            {{ form.description }}
+        </div>
+
+        <div class="form-group">
+            <h2>Image</h2>
+            <div class="image-preview">
+                {% if ticket.image %}
+                <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
+                {% endif %}
+            </div>
+
+            <input type="file" name="image" id="id_image" accept="image/*" style="display:none;">
+            <button type="button" class="btn-secondary" onclick="document.getElementById('id_image').click();">
+                Télécharger fichier
+            </button>
+        </div>
+
+        <div class="form-footer">
+            <input type="submit" value="Envoyer" class="btn-submit">
+        </div>
+    </form>
+</div>
+{% endblock %}

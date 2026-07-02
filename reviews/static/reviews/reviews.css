@@ -1,0 +1,44 @@
+img {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.ticket-preview {
+    border: 1px solid #000;
+    padding: 15px;
+    margin: 10px 0;
+
+    text-align: left;
+}
+
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+
+.ticket-title {
+    font-size: 1rem;
+    margin: 5px 0;
+    font-weight: normal;
+}
+
+
+
+.ticket-image-container {
+    display: block;
+    margin-top: 10px;
+}
+
+
+
+.ticket-date {
+    font-size: 0.7rem;
+}

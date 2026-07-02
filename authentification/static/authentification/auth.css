@@ -1,0 +1,175 @@
+.signup_field::placeholder {
+    color: black;
+    opacity: 1;
+}
+
+
+
+h2 {
+    display: flex;
+    font-weight: normal;
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+h4 {
+    font-weight: normal;
+    font-size: 1.3rem;
+}
+
+
+
+.login_page {
+    width: 99%;
+
+    border-top: none;
+    margin: -50px auto 0 auto;
+    display: flex;
+
+    gap: 200px;
+    min-height: 600px;
+    min-width: 1100px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.subscribers,
+.subscriptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscriptions p {
+    border: 1px solid black;
+    border-right: none;
+    min-width: 80%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    margin: 0;
+}
+
+.subscriptions button {
+    min-height: 42px;
+    border-radius: 0;
+}
+
+.subscription-item {
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+
+.signup,
+.signup2,
+.login,
+.psignup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.signup {
+    margin-left: 15%;
+    margin-top: 5%;
+}
+
+.login {
+    margin-top: 5%;
+}
+
+.psignup {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+}
+
+
+.signup_field {
+    padding: 8px 205px;
+    border: 1px solid black;
+    background: white;
+    outline: none;
+    font-size: 14px;
+    color: black;
+    text-align: center;
+}
+
+.button_container {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+
+.signup2 {
+    margin: 0 auto;
+}
+
+
+button,
+.btn {
+    background-color: white;
+    border: 1px solid black;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.btn {
+    border-width: 2px;
+}
+
+.searchbar form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#site-search {
+    width: 70%;
+    max-width: 850px;
+    text-align: center;
+}
+
+
+.subscribers p {
+    border: 1px solid black;
+    min-width: 80%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    margin: 0;
+}
+
+.subscribers p:last-child {
+    border-bottom: 1px solid black;
+}
+
+.following_container {
+    max-width: 1600px;
+    margin: 0 auto;
+}

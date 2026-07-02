@@ -1,0 +1,31 @@
+{% extends 'reviews/base.html' %}
+
+{% block content %}
+
+<h2>{{ user.username }}</h2>
+
+
+<h3>Followers</h3>
+<ul>
+    {% for follow in followers %}
+    <li>{{ follow.user.username }}</li>
+    {% empty %}
+    <li>No followers yet.</li>
+    {% endfor %}
+</ul>
+
+
+{% if following %}
+<h3>Following</h3>
+<ul>
+    {% for follow in following %}
+    <li>{{ follow.followed_user.username }}</li>
+    {% empty %}
+    <li>Not following anyone yet.</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<a href="{% url 'follow_users' %}">S'abonner à d'autres utilisateurs</a>
+
+{% endblock %}

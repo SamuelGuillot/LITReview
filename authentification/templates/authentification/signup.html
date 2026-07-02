@@ -1,0 +1,33 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'authentification/auth.css' %}" />
+{% endblock %}
+{% block content %}
+<!-- <h1>Formulaire d'inscription</h1> -->
+
+{% if form.errors %}
+{{ form.errors }}
+{% endif %}
+
+<div class="signup2">
+    <p class="psignup">Inscrivez-vous</p>
+    <form method="post">
+        {% csrf_token %}
+
+        <div>{{ form.username }}</div>
+        <br>
+        <div>{{ form.password1 }}</div>
+        <br>
+        <div>{{ form.password2 }}</div>
+        <br>
+        <div class="button_container">
+            <button type="button" onclick="window.location.href='{% url 'login' %}'">
+                Retourner
+            </button><button type="submit">S’inscrire</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

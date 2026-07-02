@@ -1,0 +1,36 @@
+{% load static %}
+
+<div class="post-cartouche review">
+    <p class="post-header">
+        <span>
+            {% if is_own %}
+            Vous avez publié une critique
+            {% else %}
+            {{ review.user.username }} a posté une critique
+            {% endif %}
+        </span>
+        <span class="post-date">{{ review.time_created|date:"H:i, d F Y" }}</span>
+    </p>
+
+    <h3 class="post-title">
+        {{ review.headline }} -
+        <span class="stars">
+            {% if review.rating == 5 %}★★★★★
+            {% elif review.rating == 4 %}★★★★☆
+            {% elif review.rating == 3 %}★★★☆☆
+            {% elif review.rating == 2 %}★★☆☆☆
+            {% else %}★☆☆☆☆
+            {% endif %}
+        </span>
+    </h3>
+
+    <p class="post-body">{{ review.body }}</p>
+
+    {% if review.ticket %}
+
+    {% include 'tickets/partials/ticket.html' with ticket=review.ticket %}
+
+    {% endif %}
+
+
+</div>

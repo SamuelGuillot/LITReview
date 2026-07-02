@@ -1,0 +1,50 @@
+{% load static %}
+
+<div class="ticket-cartouche">
+    <div class="ticket-header">
+        {% if nested %}
+        <span>Ticket - {% if is_own %}Vous{% else %}{{ ticket.user.username }}{% endif %}</span>
+        <span class="ticket-date">{{ ticket.time_created|date:"H:i, d F Y" }}</span>
+        {% else %}
+
+        <div class="post-header">
+            <span>
+                {% if ticket.is_own %}
+                    Vous avez demandé une critique
+                {% else %}
+                    {{ ticket.user.username }} a demandé une critique
+                {% endif %}
+            </span>
+            <span class="post-date">{{ ticket.time_created|date:"H:i, d F Y" }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <h3>{{ ticket.title }}</h3>
+
+    {% if ticket.image %}
+    <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}">
+    {% endif %}
+
+    {% if not nested %}
+    <p class="post-body">{{ ticket.description }}</p>
+    {% endif %}
+
+        {% if ticket.id not in reviewed_ticket_ids %}
+        <div class="button-right">
+            <a href="{% url 'create_review' ticket.id %}" class="btn">
+                Créer une critique
+            </a>
+        </div>
+        {% endif %}
+
+        {% if show_actions and not nested %}
+        <div class="post-actions">
+            <a href="{% url 'modify_ticket' ticket.id %}" class="btn">Modifier</a>
+            <a href="{% url 'delete_ticket' ticket.id %}" class="btn">Supprimer</a>
+        </div>
+        {% endif %}
+
+
+</div>
+

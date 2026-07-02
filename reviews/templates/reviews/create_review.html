@@ -1,0 +1,54 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
+<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="main-container">
+
+    <h2 class="page-title">Créer une critique (en réponse à un ticket)</h2>
+    <div class="ticket">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-section">
+                <h3 class="section-label">Vous êtes en train de poster en réponse à
+                </h3>
+                <div class="form-content ticket-preview">
+                    <div class="ticket-header">
+                        <p>{{ ticket.user.username }} a demandé une critique</p>
+                        <p class="ticket-date">{{ ticket.time_created|date:"H:i, d F Y" }}</p>
+                    </div>
+
+                    <h3 class="ticket-title">{{ ticket.title }}</h3>
+
+                    <p class="ticket-description">{{ ticket.description }}</p>
+
+                    {% if ticket.image %}
+                    <div class="ticket-image-container">
+                        <img src="{{ ticket.image.url }}" alt="{{ ticket.title }}" class="ticket-image">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="review">
+                <div class="form-section">
+                    <h3 class="section-label">Critique</h3>
+
+                    <div class="form-content">
+                        {{ form.as_p }}
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn-submit">Envoyer</button>
+                </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
