@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
-<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}" />
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}">
+<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -16,9 +16,9 @@
         {% csrf_token %}
 
         <div class="form-section">
-            <h3 class="section-label">
+            <h2 class="section-label">
                 Vous êtes en train de poster en réponse à
-            </h3>
+            </h2>
 
             <div class="form-content ticket-preview">
 
@@ -46,7 +46,16 @@
             <h3 class="section-label">Critique</h3>
 
             <div class="form-content">
-                {{ form.as_p }}
+
+                {{ form.headline.label_tag }}
+                {{ form.headline }}
+
+                {{ form.rating.label_tag }}
+                {{ form.rating }}
+
+                {{ form.body.label_tag }}
+                {{ form.body }}
+
             </div>
         </div>
 

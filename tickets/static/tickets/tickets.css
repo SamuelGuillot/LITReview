@@ -15,12 +15,8 @@
 
 
 
-h2,
-.form-field h3,
-.form-group h2,
-.section-label {
+h2 {
     font-size: 1.1rem;
-    font-weight: normal;
     margin-bottom: 8px;
 }
 
@@ -35,7 +31,6 @@ h2,
 .ticket-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
 .form-group {
@@ -84,7 +79,7 @@ p #id_body:last-child {
 .image-preview img {
     max-width: 200px;
     display: block;
-    margin: 40px 0;
+    margin: 15px 0;
     border: 1px solid #ddd;
 }
 
@@ -120,4 +115,29 @@ button,
     gap: 100px;
     margin: 10px 0;
     align-items: center;
+}
+
+.ticket-create-page .form-field label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.section-label {
+    font-weight: normal;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.page-title {
+    font-weight: normal;
+}
+
+#id_title {
+    text-align: center;
 }

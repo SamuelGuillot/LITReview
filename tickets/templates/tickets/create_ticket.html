@@ -1,28 +1,28 @@
 {% extends 'reviews/base.html' %}
 {% load static %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}">
 {% endblock %}
 {% block content %}
 
-<div class="ticket-container">
+<div class="ticket-container ticket-create-page">
     <h2 class="form-title">Créer un ticket</h2>
 
     <form method="post" enctype="multipart/form-data" class="ticket-form">
         {% csrf_token %}
 
         <div class="form-field">
-            <h3>Titre</h3>
+            <label for="{{ form.title.id_for_label }}">Titre</label>
             {{ form.title }}
         </div>
 
         <div class="form-field">
-            <h3>Description</h3>
+            <label for="{{ form.description.id_for_label }}">Description</label>
             {{ form.description }}
         </div>
 
         <div class="form-field">
-            <h3>Image</h3>
+            <label for="id_image">Image</label>
             <input type="file" name="image" id="id_image" accept="image/*" style="display:none;">
             <button type="button" class="btn-secondary" onclick="document.getElementById('id_image').click();">
                 Télécharger fichier

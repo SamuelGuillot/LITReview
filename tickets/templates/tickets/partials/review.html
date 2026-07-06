@@ -12,7 +12,7 @@
         <span class="post-date">{{ review.time_created|date:"H:i, d F Y" }}</span>
     </p>
 
-    <h3 class="post-title">
+    <h2 class="post-title">
         {{ review.headline }} -
         <span class="stars">
             {% if review.rating == 5 %}★★★★★
@@ -22,7 +22,7 @@
             {% else %}★☆☆☆☆
             {% endif %}
         </span>
-    </h3>
+    </h2>
 
     <p class="post-body">{{ review.body }}</p>
 

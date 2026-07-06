@@ -4,15 +4,20 @@
 
 <head>
     <meta charset="UTF-8">
-
     <title>LITReview</title>
-    <link rel="stylesheet" href="{% static 'reviews/base.css' %}" />
-    {% block extra_css %}{% endblock %}
-    <div class="banner">
-        <h1 id="logo">LITReview</h1>
-        {% if request.user.is_authenticated %}
 
+    <link rel="stylesheet" href="{% static 'reviews/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <header class="banner">
+        <h1 id="logo">LITReview</h1>
+
+        {% if request.user.is_authenticated %}
         <div class="menu">
+
             <button class="button_menu" type="button"
                 onclick="window.location.href='{% url 'user_connections' request.user.id %}'">
                 Abonnements
@@ -29,22 +34,20 @@
             <form action="{% url 'logout' %}" method="post" style="display:inline;">
                 {% csrf_token %}
                 <div class="button_container">
-                    <button type="submit" class="login_button button_menu">
+                    <button type="submit" class="button_menu">
                         Se déconnecter
                     </button>
                 </div>
             </form>
+
         </div>
         {% endif %}
-    </div>
-</head>
+    </header>
 
-<body>
-    <div class="main">
+    <main class="main">
         {% block content %}{% endblock %}
-        <br><br>
+    </main>
 
-    </div>
 </body>
 
 </html>

@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
-<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}" />
-<link rel="stylesheet" href="{% static 'tickets/flux.css' %}" />
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}">
+<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}">
+<link rel="stylesheet" href="{% static 'tickets/flux.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -23,15 +23,15 @@
 
     {% for post in posts %}
 
-        {% if post.is_review %}
+    {% if post.is_review %}
 
-            {% include 'reviews/partials/review.html' with review=post %}
+    {% include 'reviews/partials/review.html' with review=post %}
 
-        {% else %}
+    {% else %}
 
-            {% include 'tickets/partials/ticket.html' with ticket=post %}
+    {% include 'tickets/partials/ticket.html' with ticket=post %}
 
-        {% endif %}
+    {% endif %}
 
     {% empty %}
 

@@ -1,21 +1,20 @@
 {% extends 'reviews/base.html' %}
 {% load static %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'authentification/auth.css' %}" />
+<link rel="stylesheet" href="{% static 'authentification/auth.css' %}">
 {% endblock %}
 
 {% block content %}
-<!-- <h1>Page d'accueil</h1> -->
 <div class="login_page">
     <div class="signup">
-        <h4>Inscrivez-vous maintenant</h4>
+        <h2>Inscrivez-vous maintenant</h2>
         <button type="button" onclick="window.location.href='{% url 'signup' %}'">
             S’inscrire
         </button>
     </div>
 
     <div class="login">
-        <h4>Connectez-vous</h4>
+        <h2>Connectez-vous</h2>
         {% if message %}
         <p>{{ message }}</p>
         {% endif %}

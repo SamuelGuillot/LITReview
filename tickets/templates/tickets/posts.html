@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
-<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}" />
-<link rel="stylesheet" href="{% static 'tickets/posts.css' %}" />
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}">
+<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}">
+<link rel="stylesheet" href="{% static 'tickets/posts.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -13,18 +13,19 @@
 
     <h1 class="page-title">Vos posts</h1>
 
-{% for post in posts %}
+    {% for post in posts %}
 
     {% if post.rating %}
 
-        {% include 'reviews/partials/review.html' with review=post show_actions=True %}
+    {% include 'reviews/partials/review.html' with review=post show_actions=True %}
 
     {% else %}
 
-        {% include 'tickets/partials/ticket.html' with ticket=post show_actions=True %}
+    {% include 'tickets/partials/ticket.html' with ticket=post show_actions=True %}
 
     {% endif %}
 
-{% endfor %}
+    {% endfor %}
+</div>
 
 {% endblock %}

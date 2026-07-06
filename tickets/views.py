@@ -9,7 +9,6 @@ from reviews.models import Review
 from django.core.paginator import Paginator
 
 
-
 @login_required
 def create_ticket(request):
     if request.method == "POST":

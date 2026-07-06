@@ -1,9 +1,12 @@
 {% extends 'reviews/base.html' %}
 {% load static %}
+
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}" />
+<link rel="stylesheet" href="{% static 'tickets/tickets.css' %}">
 {% endblock %}
+
 {% block content %}
+
 <div class="main-container">
     <h2 class="page-title">Créer une critique</h2>
 
@@ -11,22 +14,51 @@
         {% csrf_token %}
 
         <div class="form-section">
-            <h3 class="section-label">Livre / Article</h3>
+            <h2 class="section-label">Livre / Article</h2>
+
             <div class="form-content">
-                {{ ticket_form.as_p }}
+
+                {{ ticket_form.title.label_tag }}
+                {{ ticket_form.title }}
+
+                {{ ticket_form.description.label_tag }}
+                {{ ticket_form.description }}
+
+                <label for="{{ ticket_form.image.id_for_label }}">Image</label>
+
+                <input type="file" name="{{ ticket_form.image.html_name }}" id="{{ ticket_form.image.id_for_label }}"
+                    accept="image/*" style="display:none;">
+
+                <button type="button" class="btn-secondary"
+                    onclick="document.getElementById('{{ ticket_form.image.id_for_label }}').click();">
+                    Télécharger fichier
+                </button>
+
             </div>
         </div>
 
         <div class="form-section">
-            <h3 class="section-label">Critique</h3>
+            <h2 class="section-label">Critique</h2>
+
             <div class="form-content">
-                {{ review_form.as_p }}
+
+                {{ review_form.headline.label_tag }}
+                {{ review_form.headline }}
+
+                {{ review_form.rating.label_tag }}
+                {{ review_form.rating }}
+
+                {{ review_form.body.label_tag }}
+                {{ review_form.body }}
+
             </div>
         </div>
 
         <div class="form-footer">
             <button type="submit" class="btn-submit">Envoyer</button>
         </div>
+
     </form>
 </div>
+
 {% endblock %}

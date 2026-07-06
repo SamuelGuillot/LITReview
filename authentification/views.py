@@ -68,7 +68,7 @@ def logout_user(request):
 
 
 @login_required
-def user_connections(request):
+def user_connections(request, user_id=None):
 
     if request.method == "POST":
         # Unfollow

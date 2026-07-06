@@ -4,7 +4,6 @@
 }
 
 
-
 h2 {
     display: flex;
     font-weight: normal;
@@ -14,11 +13,11 @@ h2 {
     padding-top: 40px;
 }
 
-h4 {
+
+h2 {
     font-weight: normal;
     font-size: 1.3rem;
 }
-
 
 
 .login_page {
@@ -35,6 +34,7 @@ h4 {
     justify-content: center;
 }
 
+
 .searchbar {
     display: flex;
     align-items: center;
@@ -50,6 +50,7 @@ h4 {
     align-items: center;
     justify-content: center;
 }
+
 
 .subscriptions p {
     border: 1px solid black;

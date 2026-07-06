@@ -5,6 +5,31 @@ img {
 }
 
 
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-content label {
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+.form-content input[type="text"],
+.form-content input[type="file"],
+.form-content textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    vertical-align: top;
+    line-height: 1.4;
+    min-height: 80px;
+    padding: 6px;
+}
+
 
 .ticket-preview {
     border: 1px solid #000;
@@ -14,7 +39,6 @@ img {
     text-align: left;
 }
 
-
 .ticket-header {
     display: flex;
     justify-content: space-between;
@@ -22,28 +46,34 @@ img {
     margin-bottom: 10px;
 }
 
-
-
 .ticket-title {
     font-size: 1rem;
     margin: 5px 0;
     font-weight: normal;
 }
 
-
-
 .ticket-image-container {
     display: block;
     margin-top: 10px;
 }
 
-
-
 .ticket-date {
     font-size: 0.7rem;
 }
 
-textarea {
-    vertical-align: top;
-    line-height: 1.4;
+#id_rating {
+    display: flex;
+    gap: 110px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+#id_rating div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#id_body {
+    min-height: 300px;
 }
