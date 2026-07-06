@@ -18,6 +18,7 @@
 h2 {
     font-size: 1.1rem;
     margin-bottom: 8px;
+    font-weight: normal;
 }
 
 .page-title {
@@ -120,7 +121,7 @@ button,
 .ticket-create-page .form-field label {
     display: block;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: normal;
     margin-bottom: 6px;
 }
 
@@ -132,6 +133,7 @@ label {
     display: block;
     margin-bottom: 8px;
     margin-top: 8px;
+    font-weight: normal;
 }
 
 .page-title {

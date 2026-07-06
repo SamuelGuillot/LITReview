@@ -14,12 +14,6 @@ h2 {
 }
 
 
-h2 {
-    font-weight: normal;
-    font-size: 1.3rem;
-}
-
-
 .login_page {
     width: 99%;
 
@@ -173,4 +167,8 @@ button,
 .following_container {
     max-width: 1600px;
     margin: 0 auto;
+}
+
+.signup2 {
+    margin-bottom: 50px;
 }

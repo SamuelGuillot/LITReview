@@ -40,17 +40,17 @@ class SignupForm(UserCreationForm):
     )
 
 
-class Meta(UserCreationForm.Meta):
-    model = get_user_model()
-    fields = ("username", "password1", "password2")
-    widgets = {
-        "username": forms.TextInput(
-            attrs={
-                "placeholder": "Nom d'utilisateur",
-                "class": "signup_field",
-            }
-        ),
-    }
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
+        fields = ("username", "password1", "password2")
+        widgets = {
+            "username": forms.TextInput(
+                attrs={
+                    "placeholder": "Nom d'utilisateur",
+                    "class": "signup_field",
+                }
+            ),
+        }
 
 
 User = get_user_model()
