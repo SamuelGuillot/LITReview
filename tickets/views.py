@@ -6,6 +6,8 @@ from .models import Ticket
 from .forms import TicketForm
 from reviews.forms import ReviewForm
 from reviews.models import Review
+from django.core.paginator import Paginator
+
 
 
 @login_required
@@ -128,11 +130,15 @@ def flux(request):
         key=lambda x: x.time_created,
         reverse=True,
     )
+
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     return render(
         request,
         "tickets/flux.html",
         {
-            "posts": posts,
+            "posts": page_obj,
             "followed_users_ids": followed_users_ids,
             "reviewed_ticket_ids": reviewed_ticket_ids,
         },
@@ -150,6 +156,7 @@ def posts(request):
 
     for post in posts:
         post.is_own = post.user == user
+        post.is_review = isinstance(post, Review)
 
     posts = sorted(
         posts,
@@ -157,10 +164,14 @@ def posts(request):
         reverse=True,
     )
 
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     return render(
         request,
         "tickets/posts.html",
         {
-            "posts": posts,
+            "posts": page_obj,
         },
     )
