@@ -42,3 +42,8 @@ img {
 .ticket-date {
     font-size: 0.7rem;
 }
+
+textarea {
+    vertical-align: top;
+    line-height: 1.4;
+}

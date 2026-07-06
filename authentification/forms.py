@@ -32,18 +32,25 @@ class SignupForm(UserCreationForm):
     )
     password2 = forms.CharField(
         widget=forms.PasswordInput(
-            attrs={"placeholder": "Confirmer le mot de passe", "class": "signup_field"}
+            attrs={
+                "placeholder": "Confirmer le mot de passe",
+                "class": "signup_field",
+            }
         ),
     )
 
-    class Meta(UserCreationForm.Meta):
-        model = get_user_model()
-        fields = ("username", "password1", "password2")
-        widgets = {
-            "username": forms.TextInput(
-                attrs={"placeholder": "Nom d'utilisateur", "class": "signup_field"}
-            ),
-        }
+
+class Meta(UserCreationForm.Meta):
+    model = get_user_model()
+    fields = ("username", "password1", "password2")
+    widgets = {
+        "username": forms.TextInput(
+            attrs={
+                "placeholder": "Nom d'utilisateur",
+                "class": "signup_field",
+            }
+        ),
+    }
 
 
 User = get_user_model()
@@ -72,6 +79,7 @@ class FollowUsersForm(forms.Form):
 
     def save(self):
         follow = UserFollows.objects.create(
-            user=self.user, followed_user=self.cleaned_data["followed_user_username"]
+            user=self.user,
+            followed_user=self.cleaned_data["followed_user_username"],
         )
         return follow

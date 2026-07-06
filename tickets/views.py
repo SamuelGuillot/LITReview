@@ -6,8 +6,6 @@ from .models import Ticket
 from .forms import TicketForm
 from reviews.forms import ReviewForm
 from reviews.models import Review
-from itertools import chain
-from django.db.models import Value, CharField
 
 
 @login_required
@@ -39,7 +37,7 @@ def modify_ticket(request, ticket_id):
         )  # formulaire pré-rempli
         if form.is_valid():
             form.save()
-            return redirect("ticket_detail", ticket_id=ticket.id)
+            return redirect("flux")
     else:
         form = TicketForm(
             instance=ticket
@@ -76,7 +74,7 @@ def create_ticket_review(request):
             review.ticket = ticket
             review.save()
 
-            return redirect("ticket_detail", ticket_id=ticket.id)
+            return redirect("flux")
 
     else:
         ticket_form = TicketForm()
@@ -101,11 +99,16 @@ def flux(request):
     )
 
     # Tickets (you + followed users)
-    tickets = Ticket.objects.filter(Q(user=user) | Q(user__id__in=followed_users_ids))
+    tickets = Ticket.objects.filter(
+        Q(user=user)
+        | Q(user__id__in=followed_users_ids)
+    )
 
     # Reviews
     reviews = Review.objects.filter(
-        Q(user=user) | Q(user__id__in=followed_users_ids) | Q(ticket__user=user)
+        Q(user=user)
+        | Q(user__id__in=followed_users_ids)
+        | Q(ticket__user=user)
     )
 
     # check deja review

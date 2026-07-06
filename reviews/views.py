@@ -3,32 +3,34 @@ from django.contrib.auth.decorators import login_required
 from .forms import ReviewForm
 from .models import Review
 from tickets.models import Ticket
-
 from django.http import Http404
-
-# @login_required
-# def homepage(request):
-#     return render(request, "reviews/home.html")
 
 
 @login_required
 def create_review(request, ticket_id):
-    ticket = get_object_or_404(
-        Ticket, id=ticket_id
-    )  # récupère le ticket correspondant à l'ID ou renvoie une 404 si inexistant
-    does_exist = Review.objects.filter(user=request.user, ticket_id=ticket_id).exists()
+
+    # récupère le ticket correspondant à l'ID ou renvoie une 404 si inexistant
+    ticket = get_object_or_404(Ticket, id=ticket_id)
+
+    does_exist = Review.objects.filter(
+        user=request.user,
+        ticket_id=ticket_id,
+    ).exists()
+
     if does_exist:
         raise Http404
+
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)  # crée un objet review sans l'enregistrer
-            review.user = request.user  # l'utilisateur = auteur
-            review.ticket = ticket  # relie la review au ticket
+            # crée un objet review sans l'enregistrer
+            review = form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
             review.save()
             return redirect("flux")
     else:
-        form = ReviewForm()  # formulaire vide
+        form = ReviewForm()
 
     return render(
         request,
@@ -38,21 +40,23 @@ def create_review(request, ticket_id):
 
 
 @login_required
-def modify_review(
-    request, id
-):  # récupère la review uniquement si elle appartient à l'utilisateur connecté
-    review = get_object_or_404(Review, id=id, user=request.user)
+def modify_review(request, id):
+
+    # récupère la review uniquement si elle appartient à l'utilisateur connecté
+    review = get_object_or_404(
+        Review,
+        id=id,
+        user=request.user,
+    )
     ticket = review.ticket
 
     if request.method == "POST":
-        form = ReviewForm(
-            request.POST, request.FILES, instance=review
-        )  # instance pour review existente
+        form = ReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
             form.save()
             return redirect("flux")
     else:
-        form = ReviewForm(instance=review)  # formulaire pré-rempli
+        form = ReviewForm(instance=review)
 
     return render(
         request,
@@ -63,11 +67,20 @@ def modify_review(
 
 @login_required
 def delete_review(request, id):
+
+    # récupère la review uniquement si elle appartient à l'utilisateur connecté
     review = get_object_or_404(
-        Review, id=id, user=request.user
-    )  # récupère la review uniquement si elle appartient à l'utilisateur connecté
+        Review,
+        id=id,
+        user=request.user,
+    )
+
     if request.method == "POST":
         review.delete()
-        return redirect("reviews_list")
+        return redirect("flux")
 
-    return render(request, "reviews/confirm_delete.html", {"review": review})
+    return render(
+        request,
+        "reviews/confirm_delete.html",
+        {"review": review},
+    )
