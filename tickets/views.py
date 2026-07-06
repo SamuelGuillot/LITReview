@@ -100,7 +100,7 @@ def flux(request):
         "followed_user_id", flat=True
     )
 
-    # Tickets (you + followed users)
+    # Tickets (user + followed users)
     tickets = Ticket.objects.filter(
         Q(user=user)
         | Q(user__id__in=followed_users_ids)

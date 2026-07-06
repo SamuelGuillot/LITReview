@@ -68,24 +68,31 @@ def logout_user(request):
 
 
 @login_required
-def user_connections(request, user_id=None):
+def user_connections(request):
 
     if request.method == "POST":
         # Unfollow
         unfollow_id = request.POST.get("unfollow_user_id")
+
         if unfollow_id:
             try:
+                unfollow_id = int(unfollow_id)
+
                 user_to_unfollow = User.objects.get(id=unfollow_id)
+
                 UserFollows.objects.filter(
                     user=request.user,
                     followed_user=user_to_unfollow,
                 ).delete()
-            except User.DoesNotExist:
-                # À améliorer : ajouter gestion des exceptions
-                # ValueError / TypeError
-                messages.error(request, "Utilisateur introuvable")
 
-            return redirect("user_connections", user_id=request.user.id)
+            except ValueError:
+                messages.error(request, "Identifiant invalide.")
+
+            except User.DoesNotExist:
+                messages.error(request, "Utilisateur introuvable.")
+
+            except TypeError:
+                messages.error(request, "Requête invalide.")
 
         # Follow
         form = FollowUsersForm(request.POST)
